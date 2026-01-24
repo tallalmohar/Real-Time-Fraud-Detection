@@ -17,3 +17,39 @@ General "Global Settings", decides the big decisions like what version of the to
 
 Local POM
 Local settings, can also define internal relationships between the different modules that might depend on eachother.
+
+
+the docker compose file - docker-compose.yml
+My application isnt made up of many different services that work together 
+include:
+- a message broker (kafka) to handle the stream of transactions
+- a db (postgresql) to store fraud alerts
+- a monitoring tool (prometheus ) to watch over the system 
+- a coordination service for kafka (zookeeper)
+
+Manually installing, configuring and running each of these steps on my laptop won't get me too far so I run them on isolated containers.
+
+docker-compose : a tool that lets you define and manage this entire multi-container application with single config file (docker-compose.yml)
+
+
+Breakdown of the Docker file:
+(This will also help with understanding the application and how each service plays a role )
+
+services: this is the main section where I defined each component of our infrastructure
+	zookeeper: Kafka uses Zookeeper for managing it's cluster state, tracking which broker are alive and storing configuration metadata
+	kafka: this is the core message broker. I've configured two listeners:
+		-localhost:9092 : For the local application to connect to Kafka from outside the docker network
+		-kafka:29092: For internal communication between services within the docker network.
+	postgres: A postgreSQL db for storing fradualent transactions. I've set up a persistent volume (postgres_data) to ensure that the data is saved even if you restart the container
+	prometheus: This is the monitoring service. It's configured to look for pormetheus.eml file
+networks: fraud-detection-network has been defined. This allows the containers to communicated with each other using their services name
+	- for example kafka service can reach the zookeeper service using it's hostname, zookeeper
+volumes: This seciton defines the persistent storange for the pg db
+
+Last note on the prometheus.yml
+
+- this is just a simple config file for Prometheus. It tells prometheus to look at host.docker.interanal:8080 and scrape metrics from its /actuator/prometheus endpoint. 
+
+host.docker.internal is a special DNS name that allows docker containers to connect to services running on the host machine (Prometheus running on a container will be able to interact with my springboot application running on my laptop ex.)
+
+
