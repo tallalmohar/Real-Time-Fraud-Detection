@@ -78,3 +78,6 @@ psql: postgres command line
 
 after we connect just run a simple query like:
 SELECT version(); and exit
+
+Sprint 1 - Thoughts + notes
+Sprint 1 comprieses of creating a springboot application that consistently generates realistic and random financial transactions and sends them to a Kafka Topic.

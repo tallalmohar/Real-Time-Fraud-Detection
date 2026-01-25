@@ -51,6 +51,8 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
+                <version>1.18.32</version>
+                <scope>provided</scope>
             </dependency>
             <!-- ONNX Runtime for ML models -->
             <!-- runtime libarary from microsoft will use later for fraud detection-->
@@ -67,6 +69,8 @@
                 <artifactId>micrometer-registry-prometheus</artifactId>
             </dependency>
         </dependencies>
+
+
     </dependencyManagement>
 
     <modules>

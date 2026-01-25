@@ -2,9 +2,9 @@
 
 ## Sprint 0: Infrastructure & Project Skeleton
 - [X] Initialize Multi-Module Maven/Gradle Project
-- [ ] Create `docker-compose.yml` (Zookeeper, Kafka, PostgreSQL, Prometheus)
-- [ ] Define Shared Domain Model (Common module for Transaction POJO)
-- [ ] Test Infrastructure connectivity (Verify Kafka and DB are reachable)
+- [X] Create `docker-compose.yml` (Zookeeper, Kafka, PostgreSQL, Prometheus)
+- [X] Define Shared Domain Model (Common module for Transaction POJO)
+- [X] Test Infrastructure connectivity (Verify Kafka and DB are reachable)
 
 ## Sprint 1: The Transaction Producer (The Stream)
 - [ ] Add `JavaFaker` dependency for mock data generation
