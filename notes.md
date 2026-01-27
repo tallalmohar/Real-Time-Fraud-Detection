@@ -96,4 +96,16 @@ application.properties - this file is the standard for springboot app to store i
 kakfa serializers in applications.properties -> when we send the transaction object to kafka. it needs to converted to stream of bytes (serializers duh!) here we tell kafka how to preform the conversion for the key and value fo the message, JSON STRINGS SUPRISE!
 just a quick review of what each one means (just look at the file if you are confused): key-serializer (simple string for our message key so string serializer) value-serializer: JsonSerializer converst my POJO into a JSON String
 
-Implementing the kafka producer
+Implementing the kafka producer: we need something that sends the messages now that we can construct the messages. 
+
+KafkaProducerService.java - isolated logic to interact with the external kafka system
+
+KafkaTemplate -> spring kafka helper class that helps with the process of sending the messages. manually constructing this would have been a headache. Need to dependecy inject this.
+
+the sendTransaction method just sends my transaction pojo to kafka (serialized as highlighted before) 
+the first param is a string that needs to match the topic that kafka docker instance already has (case sensitive name)
+
+Schedule Transaction Generation 
+The goal is to create a continious stream of data. Easy with teh spring built-in sceduling, we can sed new transactions every few seconds.
+
+very interesting service! @EnableScheduling on the springbootapplication class. My ScheduledTransactionProducer implements the produceTransaction that generates a transaction and sends it to kafka every 2seconds.
