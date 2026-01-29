@@ -18,7 +18,7 @@
 - [X] Set up `@KafkaListener` to ingest transaction stream
 - [X] Implement `OnnxModelConfig` to load `.onnx` file as a Singleton Bean
 - [X] Create `FeatureEngineeringService` (Normalize/Scale input data for the model)
-- [ ] Implement Inference Logic (Convert Transaction -> Tensor -> Prediction)
+- [X] Implement Inference Logic (Convert Transaction -> Tensor -> Prediction)
 
 ## Sprint 3: The Data Sink & Alerting
 - [ ] Configure Spring Data JPA and PostgreSQL connection
