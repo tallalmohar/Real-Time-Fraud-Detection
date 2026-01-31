@@ -314,3 +314,4 @@ It starts by adding to the total # of transactions and then starts the timer, to
 inside the try catch it checks for fraud-> if cleans increments clean and moves to finally to stop timer 
 if fraud increments fraud and moves to finaly to stop timer
 
+prometheus works fine! I am just going to ad a Grafana Dashboard for prettier visuals (makes it look allot nicer then the prometheus graph)

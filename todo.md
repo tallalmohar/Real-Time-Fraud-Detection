@@ -29,9 +29,9 @@
 
 ## Sprint 4: Monitoring & Observability
 - [X] Add `Micrometer` and `Actuator` dependencies
-- [ ] Define custom `Counter` for "Total Transactions" and "Fraud Detected"
-- [ ] Define `Timer` or `Gauge` for Inference Latency (ms)
-- [ ] Configure Prometheus scrape target in `application.yml`
+- [X] Define custom `Counter` for "Total Transactions" and "Fraud Detected"
+- [X] Define `Timer` or `Gauge` for Inference Latency (ms)
+- [X] Configure Prometheus scrape target in `application.yml`
 - [ ] (Optional) Create a basic Grafana dashboard to visualize fraud spikes
 
 ## Sprint 5: The ML Pipeline Bridge (Python to Java)

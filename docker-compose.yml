@@ -55,9 +55,24 @@ services:
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
 
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    networks:
+      - fraud-detection-network
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana_data:/var/lib/grafana
+    depends_on:
+      - prometheus
+
 networks:
   fraud-detection-network:
     driver: bridge
 
 volumes:
   postgres_data:
+  grafana_data:
